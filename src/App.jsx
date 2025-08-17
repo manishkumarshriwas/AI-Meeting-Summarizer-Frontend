@@ -36,7 +36,7 @@ export default function App() {
     setSummary("");
 
     try {
-      const res = await fetch("http://localhost:5001/api/generate-summary", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/generate-summary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ transcript, instruction }),
@@ -63,7 +63,7 @@ export default function App() {
     if (!emailMessage || !emailRecipients || !emailSubject) return alert("Fill all fields!");
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:5001/api/send-email", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
